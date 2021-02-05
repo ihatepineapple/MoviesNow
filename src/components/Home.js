@@ -12,32 +12,25 @@ function Home() {
         
 
     const getRandomMovies = async () => {
-        
-        // let { data } = response.data
-        // setMovies(response.data)
-
-        // create new empty array
-        // define a random key value
-        // call axios with random variable on id
-        // push response into empty array until array .length is 8
-        let randomMoviesArray = [];
         // let randomId = Math.floor(Math.random() * 8999999 + 1000000);
+        // let response = await axios.get(`http://www.omdbapi.com/?apikey=bfe43e50&i=tt${randomId}`);
+        // key = 5dc495d6de67ac6c732b3a2a73669a4b
+        let randomMoviesArray = [];
+        
+        
+            let i = 0;
+            while ( i < 9) 
+                { for ( i = 0; i < 10; i++ ) {
+                let randomId = Math.floor(Math.random() * ((1000-100)+1) + 100);
 
-            while (randomMoviesArray.length < 8) {
-            
-            for ( let i = 0; i < 8; i++ ) {
-                let randomId = Math.floor(Math.random() * 8999999 + 1000000);
-                let response = await axios.get(`http://www.omdbapi.com/?apikey=bfe43e50&i=tt${randomId}`);
-                let data  = response.data;
-                
-                if ( data.Response !== "False" && randomMoviesArray.length < 8) { 
-                    randomMoviesArray.push(data)};
-                
-            }
+                await axios.get(`https://api.themoviedb.org/3/movie/${randomId}?api_key=${process.env.REACT_APP_API_KEY}`)
+                    .then(response => randomMoviesArray.push(response.data))
+                    .catch(error => console.log(`${error}`));    
+            } 
         }
-
-        setMovies(randomMoviesArray)
-        return movies
+        setMovies(randomMoviesArray);
+        console.log(movies);
+           
     }
 
     
@@ -45,16 +38,20 @@ function Home() {
         <div>
             <NavBar /> 
 
-            {(movies.length === 8) ?
+            {(movies.length === 9) ?
                 movies.map((movie, index) => {
                     return(
                         <div key={index}>
-                            <h1>{movie.Title}</h1>
+                            <h1>{movie.original_title}</h1>
+                            <p>{index}</p>
                         </div>
                     )
                 })
                 :
+                <div>
                 <p>Loading movies, be patient</p>
+                <button onClick={getRandomMovies}>Retry</button>
+                </div>
             }
 
             
