@@ -17,17 +17,16 @@ function Home() {
         // key = 5dc495d6de67ac6c732b3a2a73669a4b
         let randomMoviesArray = [];
         
-        
-            let i = 0;
-            while ( i < 9) 
-                { for ( i = 0; i < 10; i++ ) {
-                let randomId = Math.floor(Math.random() * ((1000-100)+1) + 100);
+        do {
+            
+            
+                let randomId = Math.floor(Math.random() * ((10000-100)+1) + 100);
 
                 await axios.get(`https://api.themoviedb.org/3/movie/${randomId}?api_key=${process.env.REACT_APP_API_KEY}`)
                     .then(response => randomMoviesArray.push(response.data))
                     .catch(error => console.log(`${error}`));    
-            } 
-        }
+            
+        } while (randomMoviesArray.length < 9) 
         setMovies(randomMoviesArray);
         console.log(movies);
            
@@ -43,14 +42,13 @@ function Home() {
                     return(
                         <div key={index}>
                             <h1>{movie.original_title}</h1>
-                            <p>{index}</p>
                         </div>
                     )
                 })
                 :
                 <div>
-                <p>Loading movies, be patient</p>
-                <button onClick={getRandomMovies}>Retry</button>
+                    <p>Loading movies, be patient</p> 
+                    <button onClick={getRandomMovies}>retry</button>  
                 </div>
             }
 
