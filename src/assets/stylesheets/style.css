@@ -1,0 +1,107 @@
+@font-face {
+  font-family: "Relative-Bold-Italic";
+  src: url("../fonts/Relative-Bold-Italic.otf") format("otf");
+}
+
+@font-face {
+  font-family: "Relative-Bold";
+  src: url("../fonts/Relative-Bold.otf") format("otf");
+}
+
+@font-face {
+  font-family: "Relative-Book";
+  src: url("../fonts/Relative-Book.otf") format("otf");
+}
+
+@font-face {
+  font-family: "Relative-Italic";
+  src: url("../fonts/Relative-Italic.otf") format("otf");
+}
+
+@font-face {
+  font-family: "Relative-Medium-Italic";
+  src: url("../fonts/Relative-Medium-Italic.otf") format("otf");
+}
+
+@font-face {
+  font-family: "Relative-Medium";
+  src: url("../fonts/Relative-Medium.otf") format("otf");
+}
+
+@font-face {
+  font-family: "IntroHeadH-Base";
+  src: url("../fonts/IntroHeadH-Base.otf") format("otf");
+}
+
+body {
+  background-color: #10384A;
+  font-family: "Relative-Book";
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-family: "IntroHeadH-Base";
+    margin: 5px;
+    text-transform: uppercase;
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1em;
+    margin-top: 0;
+    font-weight: 100;
+    font-style: italic;
+  }
+  h2 span {
+    font-weight: "bold";
+  }
+  .movies-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 20px;
+  }
+  .movie-card {
+    background-color: #F5EDEB;
+    width: 300px;
+    text-align: left;
+    margin: 10px;
+  }
+  .movie-card .movie-image-container {
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .movie-card .movie-info {
+    padding: 10px;
+  }
+  .movie-card .movie-data {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .movie-card .movie-data .movie-rating {
+    font-family: "IntroHeadH-Base";
+    font-size: 3em;
+  }
+  .movie-card .movie-data .ring {
+    margin: 5px;
+  }
+  .movie-card .movie-data .movie-numbers {
+    line-height: 1em;
+    margin-left: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+}
+/*# sourceMappingURL=style.css.map */

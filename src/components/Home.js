@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from "./NavBar";
+import '../assets/stylesheets/style.css';
+import CircularProgressbar from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 function Home() {
     const [movies, setMovies] = useState([]);
@@ -8,8 +11,6 @@ function Home() {
     useEffect(() => {
         getRandomMovies();
     }, []);
-
-        
 
     const getRandomMovies = async () => {
         // let randomId = Math.floor(Math.random() * 8999999 + 1000000);
@@ -36,8 +37,8 @@ function Home() {
         let randomMoviesArray = [];
 
         for ( let i = 0; i < 9; i++) { 
-            const inicialArray = ["batman", "pulp fiction", "watchmen", "spirited away", "moonrise kingdom", "fight club", "drive", "i tonya", "memento" ];
-            let randomQuery = inicialArray[i];
+            let initialArray = ["batman", "pulp fiction", "watchmen", "spirited away", "moonrise kingdom", "fight club", "drive", "i tonya", "memento" ];
+            let randomQuery = initialArray[i];
             let response = await axios.get(`http://www.omdbapi.com/?apikey=22990c51&t=${randomQuery}`);
             randomMoviesArray.push(response.data)
         }
@@ -49,6 +50,7 @@ function Home() {
            
     }
 
+    
     
     return (
         <div>
@@ -63,12 +65,37 @@ function Home() {
                             </div>
                             <div className="movie-info">
                                 <h1>{movie.Title}</h1>
-                                <h2>{movie.Director}</h2>
-                                <div><p>{movie.overview}</p></div>
-                                <div>
-                                    <h2>{movie.imdbRating}</h2>
-                                    <div>
-                                        <p>{movie.Runtime}utes</p><br/>
+                                <h2>  Directed by: <b>{movie.Director}</b></h2>
+                                {/* <div><p>{movie.Plot}</p></div> */}
+                                <div className="movie-data">
+                                    <div className="ring">
+                                        <CircularProgressbar
+                                            percentage={movie.Metascore}
+                                            text={`${movie.Metascore}%`}
+                                            styles={{
+                                                root: {
+                                                    width: "90px",
+                                                    height: "90px",
+                                                },
+                                                path: {
+                                                    stroke: `#50E3C2`,
+                                                    strokeLinecap: 'butt',
+                                                },
+                                                trail: {
+                                                    stroke: "rgba(170, 250, 235, 0.3)",
+                                                },
+                                                text: {
+                                                    fontFamily: "IntroHeadH-Base",
+                                                    fill: "black",
+                                                    fontSize: "2.5em"
+                                                }
+                                            }}
+                                        />
+                                       
+                                    </div>
+
+                                    <div className="movie-numbers">
+                                        <p>{movie.Runtime}utes</p>
                                         <p>Release year: {movie.Year}</p>
                                     </div>
                                 </div>
