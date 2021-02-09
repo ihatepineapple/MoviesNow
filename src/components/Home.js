@@ -31,9 +31,9 @@ function Home() {
     
     
     return (
-        <div>
+        <div >
             <NavBar /> 
-
+            <div className="content-box">
             <div className="movies-wrapper">
             {movies.map((movie, index) => {
                     return(
@@ -44,7 +44,7 @@ function Home() {
                             <div className="movie-info">
                                 <h1>{movie.Title}</h1>
                                 <h2>  Dir: <b>{movie.Director}</b> ({movie.Year})</h2>
-                                {/* <div><p>{movie.Plot}</p></div> */}
+                                <div className="movie-plot">{movie.Plot}</div>
                                 <div className="movie-data">
                                     <div className="ring">
                                         <CircularProgressbar
@@ -76,7 +76,7 @@ function Home() {
                                         <p> <Icon path={mdiTimerOutline}
                                             title="Time"
                                             size={0.8}
-                                            color="black"
+                                            color="#2E2E2F"
                                             className="icon"
                                            /> {movie.Runtime}utes</p>
                                         
@@ -84,7 +84,7 @@ function Home() {
                                         <p> <Icon path={mdiFilmstripBox}
                                             title="Filmstrip"
                                             size={0.8}
-                                            color="black"
+                                            color="#2E2E2F"
                                             className="icon"
                                            /> {movie.Genre}</p>
                                     </div>
@@ -94,7 +94,7 @@ function Home() {
                     )
                 })}
             </div>
-
+            </div>
             
         </div>
     )
