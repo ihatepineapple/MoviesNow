@@ -128,6 +128,15 @@ body {
                 margin-left: 5px;
                 font-size: 0.9em;
                 font-weight: bold;
+
+                p {
+                    @include flex;
+                    align-items: center;
+                }
+
+                .icon {
+                    padding-right: 5px;
+                }
             }
         }
 

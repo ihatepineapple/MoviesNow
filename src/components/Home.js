@@ -5,6 +5,9 @@ import '../assets/stylesheets/style.css';
 import CircularProgressbar from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
+import Icon from '@mdi/react'
+import { mdiFilmstripBox, mdiTimerOutline } from '@mdi/js';
+
 function Home() {
     const [movies, setMovies] = useState([]);
 
@@ -13,42 +16,17 @@ function Home() {
     }, []);
 
     const getRandomMovies = async () => {
-        // let randomId = Math.floor(Math.random() * 8999999 + 1000000);
-        // let response = await axios.get(`http://www.omdbapi.com/?apikey=bfe43e50&i=tt${randomId}`);
-        // await axios.get(`https://api.themoviedb.org/3/movie/${randomId}?api_key=${process.env.REACT_APP_API_KEY}`)
-        // key = 5dc495d6de67ac6c732b3a2a73669a4b
-        
-        // let response = await axios.get(`http://www.omdbapi.com/?apikey=22990c51&s=batman`);
-        // console.log(response.data.Search);
-        // setMovies(response.data.Search);
-
-        // do { 
-        //     // let randomId = Math.floor(Math.random() * ((10000-100)+1) + 100);
-
-        //     await axios.get(`http://www.omdbapi.com/?apikey=22990c51&s=batman`)
-        //         .then(response => console.log(response.data));
-        //         .catch(error => console.log(`${error}`));    
-            
-        // } while (randomMoviesArray.length < 9) 
-        // setMovies(randomMoviesArray);
-        // console.log(movies);
-
-       
         let randomMoviesArray = [];
 
         for ( let i = 0; i < 9; i++) { 
             let initialArray = ["batman", "pulp fiction", "watchmen", "spirited away", "moonrise kingdom", "fight club", "drive", "i tonya", "memento" ];
             let randomQuery = initialArray[i];
             let response = await axios.get(`http://www.omdbapi.com/?apikey=22990c51&t=${randomQuery}`);
-            randomMoviesArray.push(response.data)
-        }
-        console.log(randomMoviesArray)
-        setMovies(randomMoviesArray)
-        // let response = await axios.get(`http://www.omdbapi.com/?apikey=22990c51&t=batman`);
-        // console.log(response.data);
-        // setMovies(response.data);
-           
-    }
+            randomMoviesArray.push(response.data);
+        };
+        console.log(randomMoviesArray);
+        setMovies(randomMoviesArray);      
+    };
 
     
     
@@ -65,7 +43,7 @@ function Home() {
                             </div>
                             <div className="movie-info">
                                 <h1>{movie.Title}</h1>
-                                <h2>  Directed by: <b>{movie.Director}</b></h2>
+                                <h2>  Dir: <b>{movie.Director}</b> ({movie.Year})</h2>
                                 {/* <div><p>{movie.Plot}</p></div> */}
                                 <div className="movie-data">
                                     <div className="ring">
@@ -95,8 +73,20 @@ function Home() {
                                     </div>
 
                                     <div className="movie-numbers">
-                                        <p>{movie.Runtime}utes</p>
-                                        <p>Release year: {movie.Year}</p>
+                                        <p> <Icon path={mdiTimerOutline}
+                                            title="Time"
+                                            size={0.8}
+                                            color="black"
+                                            className="icon"
+                                           /> {movie.Runtime}utes</p>
+                                        
+                                        
+                                        <p> <Icon path={mdiFilmstripBox}
+                                            title="Filmstrip"
+                                            size={0.8}
+                                            color="black"
+                                            className="icon"
+                                           /> {movie.Genre}</p>
                                     </div>
                                 </div>
                             </div>
