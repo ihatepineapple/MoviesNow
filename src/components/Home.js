@@ -47,7 +47,7 @@ function Home() {
 
         for ( let i = 0; i < 9; i++) { 
             let randomQuery = newArray[i];
-            let response = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIES_API_KEY}&t=${randomQuery}`);
+            let response = await axios.get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIES_API_KEY}&t=${randomQuery}`);
             randomMoviesArray.push(response.data);
         };
         setMovies(randomMoviesArray);      

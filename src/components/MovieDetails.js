@@ -12,7 +12,7 @@ const MovieDetails = (props) => {
     let movieData = props.match.params.id;
 
     useEffect(() => {
-        axios.get(`http://www.omdbapi.com/?apikey=22990c51&i=${movieData}`)
+        axios.get(`https://www.omdbapi.com/?apikey=22990c51&i=${movieData}`)
         .then(movieDB => {setDetailMovie(movieDB.data)})
         .catch(error => console.log(`${error}`))
     }, []);
