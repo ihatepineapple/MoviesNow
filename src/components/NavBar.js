@@ -8,7 +8,7 @@ const NavBar = () => {
       <a onClick={() => {window.location.href="/"}}>
         <img src={Logo} alt="movies-now" style={{height: "40px", padding: "10px"}}/>
       </a>
-      {/* <Link to="/"><img src={Logo} alt="movies-now" style={{height: "40px", padding: "10px"}}/></Link> */}
+     
     </div>
   )
 };
