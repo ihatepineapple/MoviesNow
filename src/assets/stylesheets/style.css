@@ -38,6 +38,26 @@ body {
   font-family: "Relative-Book";
 }
 
+.input-search {
+  height: 40px;
+  border: none;
+  border-bottom: 2px solid #F5EDEB;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 50vw;
+  font-style: italic;
+  font-size: 1.4em;
+  color: #50E3C2;
+  background-color: #10384A;
+}
+
+.input-search:focus {
+  outline: none !important;
+  border-color: #50E3C2;
+  -webkit-box-shadow: 0 0 1px #50E3C2;
+          box-shadow: 0 0 1px #50E3C2;
+}
+
 @media (max-width: 600px) {
   .nav-bar {
     background-color: #F5EDEB;
@@ -61,6 +81,9 @@ body {
   }
   h2 span {
     font-weight: "bold";
+  }
+  .input-search {
+    width: 70vw;
   }
   .movies-wrapper {
     display: -webkit-box;

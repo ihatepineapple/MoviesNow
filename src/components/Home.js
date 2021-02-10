@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from "./NavBar";
+import SearchBar from "./Searchbar";
 import '../assets/stylesheets/style.css';
 import CircularProgressbar from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -10,6 +11,9 @@ import { mdiFilmstripBox, mdiTimerOutline } from '@mdi/js';
 
 function Home() {
     const [movies, setMovies] = useState([]);
+    const [searchState, setSearchState] = useState(false);
+    const [inputMovies, setInputMovies] = useState([]);
+    let resultMovies = [];
 
     useEffect(() => {
         getRandomMovies();
@@ -24,18 +28,44 @@ function Home() {
             let response = await axios.get(`http://www.omdbapi.com/?apikey=22990c51&t=${randomQuery}`);
             randomMoviesArray.push(response.data);
         };
-        console.log(randomMoviesArray);
         setMovies(randomMoviesArray);      
     };
 
-    
+    const handleFilterMovies = async(searchInput) => {
+       
+        let response = await axios.get(`http://www.omdbapi.com/?apikey=22990c51&s=${searchInput}`);
+        console.log(response.data)
+        resultMovies.push(response.data.Search);
+        console.log(resultMovies)
+        
+        setInputMovies(...resultMovies);
+        console.log(inputMovies);
+        setSearchState(true);
+    };
     
     return (
         <div >
             <NavBar /> 
+            <SearchBar handleFilterSearch={handleFilterMovies}/> 
             <div className="content-box">
             <div className="movies-wrapper">
-            {movies.map((movie, index) => {
+
+            { searchState ?
+                inputMovies.map((movie, index) => {
+                    return(
+                        <div key={index} className="movie-card">
+                            <div className="movie-image-container">
+                                <img src={movie.Poster} alt={movie.Title} /> 
+                            </div>
+                            <div className="movie-info">
+                                <h1>{movie.Title}</h1>
+                                <h2> {movie.Year}</h2>
+                            </div>
+                        </div>
+                    )
+                })
+            : 
+                movies.map((movie, index) => {
                     return(
                         <div key={index} className="movie-card">
                             <div className="movie-image-container">
@@ -92,7 +122,8 @@ function Home() {
                             </div>
                         </div>
                     )
-                })}
+                })
+            }
             </div>
             </div>
             

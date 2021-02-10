@@ -62,6 +62,25 @@ body {
    font-family: "Relative-Book";
 } 
 
+.input-search {
+    height: 40px;
+    border: none;
+    border-bottom: 2px solid #F5EDEB;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 50vw;
+    font-style: italic;
+    font-size: 1.4em;
+    @include bright-green;
+    background-color: #10384A;
+
+    &:focus {
+        outline: none !important;
+        border-color: #50E3C2;
+        box-shadow: 0 0 1px #50E3C2;
+    }
+}
+
 //RESPONSIVE MOBILE
 
 @media (max-width: 600px) {
@@ -92,6 +111,10 @@ body {
             font-weight: "bold"
         }
         
+    }
+
+    .input-search {
+        width: 70vw;
     }
 
     .movies-wrapper {
@@ -160,7 +183,7 @@ body {
             }
         }
     }
-
+    
 }
 
 //RESPONSIVE DESKTOP
