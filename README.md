@@ -17,7 +17,6 @@ Then run "npm install" in your code editor to install dependencies.
 Finally run script "npm start" to check on development mode.
 
 
-
 API Documentation
 -----------------
 https://developers.themoviedb.org/3/getting-started/introduction 
