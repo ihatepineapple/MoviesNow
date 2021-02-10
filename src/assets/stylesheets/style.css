@@ -58,6 +58,17 @@ body {
           box-shadow: 0 0 1px #50E3C2;
 }
 
+a {
+  text-decoration: none;
+}
+
+.button {
+  color: #10364B;
+  background-color: #50E3C2;
+  font-family: "Relative-Bold";
+  padding: 10px 25px;
+}
+
 @media (max-width: 600px) {
   .nav-bar {
     background-color: #F5EDEB;
@@ -154,6 +165,63 @@ body {
   }
   .movie-card .movie-info .movie-data .movie-numbers .icon {
     padding-right: 5px;
+  }
+  .container-btn {
+    margin-top: 20px;
+    padding: 10px;
+  }
+  .single-movie-container {
+    background-color: #F5EDEB;
+    width: 70vw;
+    padding: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .single-movie-container .detail-control {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: #2E2E2F;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    margin-top: 20px;
+  }
+  .single-movie-container .detail-control .category {
+    text-transform: uppercase;
+    font-family: "Relative-Book";
+    font-weight: 300;
+    font-size: 0.8em;
+    text-align: right;
+    padding-right: 10px;
+    width: 80px;
+    margin: 0;
+  }
+  .single-movie-container .detail-control .content {
+    font-size: 0.9em;
+    text-align: left;
+    width: 150px;
+    margin: 0;
+  }
+  .single-movie-container .single-movie-plot {
+    font-size: 0.8em;
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
 }
 
@@ -266,6 +334,82 @@ body {
   }
   .movie-card .movie-info .movie-data .movie-numbers .icon {
     padding-right: 5px;
+  }
+  .single-box {
+    margin-top: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .single-box .container-btn {
+    width: 60vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .single-movie-container {
+    background-color: #F5EDEB;
+    width: 60vw;
+    text-align: left;
+    padding: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .single-movie-container .single-movie-info {
+    padding-left: 30px;
+  }
+  .single-movie-container .detail-control {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: #2E2E2F;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    margin-top: 20px;
+  }
+  .single-movie-container .detail-control .category {
+    text-transform: uppercase;
+    font-family: "Relative-Book";
+    font-weight: 300;
+    font-size: 0.8em;
+    text-align: right;
+    padding-right: 10px;
+    width: 85px;
+    margin: 0;
+  }
+  .single-movie-container .detail-control .content {
+    font-size: 0.9em;
+    text-align: left;
+    width: 250px;
+    margin: 0;
+  }
+  .single-movie-container .single-movie-plot {
+    font-size: 0.8em;
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
 }
 /*# sourceMappingURL=style.css.map */

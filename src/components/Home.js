@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+
 import NavBar from "./NavBar";
 import SearchBar from "./Searchbar";
 import '../assets/stylesheets/style.css';
@@ -21,16 +23,36 @@ function Home() {
 
     const getRandomMovies = async () => {
         let randomMoviesArray = [];
+        let newArray = [];
+        let initialArray = [
+            "batman", "pulp fiction", "watchmen", 
+            "spirited away", "moonrise kingdom", "fight club", 
+            "drive", "i tonya", "memento",
+            "the godfather", "moonlight", "la la land",
+            "only god forgives", "sleepy hollow", "love actually",
+            "blade runner", "gattaca", "wolf of wall street" ];
+        let tempArray = initialArray.slice()
+
+    const getNewArray = () => {
+  
+        for (let i =0; i < 9; i++){
+        let arr = tempArray[Math.floor(Math.random()* tempArray.length)];
+        let index = tempArray.indexOf(arr);
+        tempArray.splice(index, 1 );
+        newArray.push(arr)
+        }
+        return newArray;
+    };
+    getNewArray();
 
         for ( let i = 0; i < 9; i++) { 
-            let initialArray = ["batman", "pulp fiction", "watchmen", "spirited away", "moonrise kingdom", "fight club", "drive", "i tonya", "memento" ];
-            let randomQuery = initialArray[i];
-            let response = await axios.get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIES_API_KEY}&t=${randomQuery}`)
-                                    .catch((error) => console.error(error));
+            let randomQuery = newArray[i];
+            let response = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIES_API_KEY}&t=${randomQuery}`);
             randomMoviesArray.push(response.data);
         };
         setMovies(randomMoviesArray);      
     };
+
 
     const handleFilterMovies = async(searchInput) => {
        
@@ -60,7 +82,7 @@ function Home() {
                                 <img src={movie.Poster} alt={movie.Title} /> 
                             </div>
                             <div className="movie-info">
-                                <h1>{movie.Title}</h1>
+                                <Link to={`/${movie.imdbID}`}><h1>{movie.Title}</h1></Link>
                                 <h2> {movie.Year}</h2>
                             </div>
                         </div>
@@ -74,7 +96,7 @@ function Home() {
                                 <img src={movie.Poster} alt={movie.Title} /> 
                             </div>
                             <div className="movie-info">
-                                <h1>{movie.Title}</h1>
+                                <Link to={`/${movie.imdbID}`}><h1>{movie.Title}</h1></Link>
                                 <h2>  Dir: <b>{movie.Director}</b> ({movie.Year})</h2>
                                 <div className="movie-plot">{movie.Plot}</div>
                                 <div className="movie-data">

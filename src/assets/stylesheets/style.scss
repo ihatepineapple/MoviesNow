@@ -81,6 +81,17 @@ body {
     }
 }
 
+a {
+    text-decoration: none;
+}
+
+.button {
+    @include can-blue;
+    background-color: #50E3C2;
+    font-family: "Relative-Bold";
+    padding: 10px 25px;    
+}
+
 //RESPONSIVE MOBILE
 
 @media (max-width: 600px) {
@@ -183,6 +194,54 @@ body {
             }
         }
     }
+
+    .container-btn {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .single-movie-container {
+        background-color: #F5EDEB;
+        width: 70vw;
+        padding: 15px;
+        @include flex;
+        flex-direction: column;
+        align-items: center;
+
+        .detail-control {
+            @include flex;
+            @include dark-grey;
+            flex-direction: row;
+            justify-content: center;
+            align-items: baseline;
+            margin-top: 20px;
+
+            .category {
+                text-transform: uppercase;
+                font-family: "Relative-Book";
+                font-weight: 300;
+                font-size: 0.8em;
+                text-align: right;
+                padding-right: 10px;
+                width: 80px;
+                margin: 0;
+            }
+
+            .content { 
+                font-size: 0.9em;
+                text-align: left;
+                width: 150px;
+                margin: 0;
+            }
+        }
+
+        .single-movie-plot {
+            font-size: 0.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+    
+    }
     
 }
 
@@ -243,10 +302,7 @@ body {
         
 
         .movie-image-container {
-            // width: 280px;
-            // height: auto;
-            object-fit: cover;
-            
+            object-fit: cover;   
         }
 
         .movie-info {
@@ -294,5 +350,65 @@ body {
             }
         }
     }
+
+    .single-box {
+        margin-top: 25px;
+        @include flex;
+        align-items: center;
+        flex-direction: column;
+
+        .container-btn {
+            width: 60vw;
+            @include flex;
+            justify-content: flex-start;
+        }
+    }
     
+    .single-movie-container {
+        background-color: #F5EDEB;
+        width: 60vw;
+        text-align: left;
+        padding: 15px;
+        @include flex;
+        flex-direction: row;
+
+        .single-movie-info {
+            padding-left: 30px;
+        }
+
+        .detail-control {
+            @include flex;
+            @include dark-grey;
+            flex-direction: row;
+            justify-content: center;
+            align-items: baseline;
+            margin-top: 20px;
+
+            .category {
+                text-transform: uppercase;
+                font-family: "Relative-Book";
+                font-weight: 300;
+                font-size: 0.8em;
+                text-align: right;
+                padding-right: 10px;
+                width: 85px;
+                margin: 0;
+            }
+
+            .content { 
+                font-size: 0.9em;
+                text-align: left;
+                width: 250px;
+                margin: 0;
+            }
+        }
+
+        .single-movie-plot {
+            font-size: 0.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+            
+    }
+ 
 }
