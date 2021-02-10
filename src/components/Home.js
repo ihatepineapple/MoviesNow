@@ -52,7 +52,7 @@ function Home() {
             <div className="content-box">
             <div className="movies-wrapper">
 
-            { searchState ?
+            { searchState && inputMovies ?
                 inputMovies.map((movie, index) => {
                     return(
                         <div key={index} className="movie-card">
