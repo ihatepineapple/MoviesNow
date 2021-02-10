@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+
 import NavBar from "./NavBar";
 import SearchBar from "./Searchbar";
 import '../assets/stylesheets/style.css';
@@ -50,7 +52,7 @@ function Home() {
             <div className="content-box">
             <div className="movies-wrapper">
 
-            { searchState ?
+            { searchState && inputMovies ?
                 inputMovies.map((movie, index) => {
                     return(
                         <div key={index} className="movie-card">
@@ -58,7 +60,7 @@ function Home() {
                                 <img src={movie.Poster} alt={movie.Title} /> 
                             </div>
                             <div className="movie-info">
-                                <h1>{movie.Title}</h1>
+                                <Link to={`/${movie.imdbID}`}><h1>{movie.Title}</h1></Link>
                                 <h2> {movie.Year}</h2>
                             </div>
                         </div>
@@ -72,7 +74,7 @@ function Home() {
                                 <img src={movie.Poster} alt={movie.Title} /> 
                             </div>
                             <div className="movie-info">
-                                <h1>{movie.Title}</h1>
+                                <Link to={`/${movie.imdbID}`}><h1>{movie.Title}</h1></Link>
                                 <h2>  Dir: <b>{movie.Director}</b> ({movie.Year})</h2>
                                 <div className="movie-plot">{movie.Plot}</div>
                                 <div className="movie-data">
