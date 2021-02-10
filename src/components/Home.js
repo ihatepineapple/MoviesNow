@@ -25,7 +25,7 @@ function Home() {
         for ( let i = 0; i < 9; i++) { 
             let initialArray = ["batman", "pulp fiction", "watchmen", "spirited away", "moonrise kingdom", "fight club", "drive", "i tonya", "memento" ];
             let randomQuery = initialArray[i];
-            let response = await axios.get(`http://www.omdbapi.com/?apikey=22990c51&t=${randomQuery}`);
+            let response = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIES_API_KEY}1&t=${randomQuery}`);
             randomMoviesArray.push(response.data);
         };
         setMovies(randomMoviesArray);      
@@ -33,7 +33,7 @@ function Home() {
 
     const handleFilterMovies = async(searchInput) => {
        
-        let response = await axios.get(`http://www.omdbapi.com/?apikey=22990c51&s=${searchInput}`);
+        let response = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIES_API_KEY}&s=${searchInput}`);
         console.log(response.data)
         resultMovies.push(response.data.Search);
         console.log(resultMovies)
